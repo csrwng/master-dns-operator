@@ -20,6 +20,12 @@ vet:
 install:
 	oc apply -f ./manifests
 
+.PHONY: dev-install
+dev-install:
+	oc apply -f ./manifests/00_namespace.yaml
+	oc apply -f ./manifests/01_config_crd.yaml
+	oc apply -f ./manifests/01_dns_crd.yaml
+
 .PHONY: build
 build: manager external-dns
 
